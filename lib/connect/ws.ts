@@ -61,11 +61,11 @@ function createWebSocket (client: MqttClient, opts: ClientOptions) {
   return websocket(url, [websocketSubProtocol], opts.wsOptions)
 }
 
-function buildBuilder (client: MqttClient, opts: ClientOptions) {
+export function buildBuilderNormal (client: MqttClient, opts: ClientOptions) {
   return createWebSocket(client, opts)
 }
 
-function buildBuilderBrowser (client, opts) {
+export function buildBuilderBrowser (client, opts) {
   if (!opts.hostname) {
     opts.hostname = opts.host
   }
@@ -87,4 +87,7 @@ function buildBuilderBrowser (client, opts) {
   return createWebSocket(client, opts)
 }
 
-export = buildBuilder
+const buildBuilder: (typeof buildBuilderNormal) = IS_BROWSER ? buildBuilderBrowser : buildBuilderNormal;
+
+export { buildBuilder }
+

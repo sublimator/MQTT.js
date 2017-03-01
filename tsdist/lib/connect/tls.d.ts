@@ -1,5 +1,5 @@
 /// <reference types="node" />
-import * as tls from 'tls';
 import { MqttClient, ClientOptions } from '../client';
+import tls = require('tls');
 declare function buildBuilder(mqttClient: MqttClient, opts: ClientOptions): tls.ClearTextStream;
-export = buildBuilder;
+export { buildBuilder };

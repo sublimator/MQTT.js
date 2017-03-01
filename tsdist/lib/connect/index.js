@@ -1,21 +1,24 @@
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
+/// <reference types="node"/>
 var client_1 = require("../client");
 exports.MqttClient = client_1.MqttClient;
-var wsBuilder = require("./ws");
+var ws_1 = require("./ws");
+var tcp_1 = require("./tcp");
+var tls_1 = require("./tls");
 var url = require("url");
 var xtend = require("xtend");
 var protocols = {};
 exports.protocols = protocols;
 if (process.title !== 'browser') {
-    protocols.mqtt = require('./tcp');
-    protocols.tcp = require('./tcp');
-    protocols.ssl = require('./tls');
-    protocols.tls = require('./tls');
-    protocols.mqtts = require('./tls');
+    protocols.mqtt = tcp_1.buildBuilder;
+    protocols.tcp = tcp_1.buildBuilder;
+    protocols.ssl = tls_1.buildBuilder;
+    protocols.tls = tls_1.buildBuilder;
+    protocols.mqtts = tls_1.buildBuilder;
 }
-protocols.ws = wsBuilder;
-protocols.wss = wsBuilder;
+protocols.ws = ws_1.buildBuilder;
+protocols.wss = ws_1.buildBuilder;
 /**
  * Parse the auth attribute and merge username and password in the options object.
  *

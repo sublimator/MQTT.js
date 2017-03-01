@@ -1,3 +1,5 @@
 import { MqttClient, ClientOptions } from '../client';
-declare function buildBuilder(client: MqttClient, opts: ClientOptions): any;
-export = buildBuilder;
+export declare function buildBuilderNormal(client: MqttClient, opts: ClientOptions): any;
+export declare function buildBuilderBrowser(client: any, opts: any): any;
+declare const buildBuilder: (typeof buildBuilderNormal);
+export { buildBuilder };

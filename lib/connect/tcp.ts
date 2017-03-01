@@ -1,5 +1,5 @@
 'use strict'
-import * as net from 'net'
+import net = require('net')
 import {MqttClient, ClientOptions} from '../client'
 
 /*
@@ -7,6 +7,7 @@ import {MqttClient, ClientOptions} from '../client'
   you have all required information in opts object
 */
 function buildBuilder (client: MqttClient, opts: ClientOptions) {
+  let net = require('net')
   let port, host
   opts.port = opts.port || 1883
   opts.hostname = opts.hostname || opts.host || 'localhost'
@@ -17,4 +18,4 @@ function buildBuilder (client: MqttClient, opts: ClientOptions) {
   return net.createConnection(+port, host)
 }
 
-export = buildBuilder
+export {buildBuilder}

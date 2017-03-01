@@ -1,8 +1,9 @@
 'use strict'
-import * as tls from 'tls'
 import {MqttClient, ClientOptions} from '../client'
+import tls = require('tls')
 
 function buildBuilder (mqttClient: MqttClient, opts: ClientOptions) {
+  let tls = require('tls')
   let connection: tls.ClearTextStream
   opts.port = opts.port || 8883
   opts.host = opts.hostname || opts.host || 'localhost'
@@ -37,4 +38,4 @@ function buildBuilder (mqttClient: MqttClient, opts: ClientOptions) {
   return connection
 }
 
-export = buildBuilder
+export {buildBuilder}

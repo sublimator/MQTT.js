@@ -1,18 +1,21 @@
 'use strict'
+/// <reference types="node"/>
 
 import {MqttClient, ClientOptions} from '../client'
-import wsBuilder = require('./ws')
+import {buildBuilder as wsBuilder} from './ws'
+import {buildBuilder as tcpBuilder} from './tcp'
+import {buildBuilder as sslBuilder} from './tls'
 import * as url from 'url'
 import * as xtend from 'xtend'
 
 const protocols: any = {}
 
 if (process.title !== 'browser') {
-  protocols.mqtt = require('./tcp')
-  protocols.tcp = require('./tcp')
-  protocols.ssl = require('./tls')
-  protocols.tls = require('./tls')
-  protocols.mqtts = require('./tls')
+  protocols.mqtt = tcpBuilder
+  protocols.tcp = tcpBuilder
+  protocols.ssl = sslBuilder
+  protocols.tls = sslBuilder
+  protocols.mqtts = sslBuilder
 }
 
 protocols.ws = wsBuilder

@@ -1,4 +1,5 @@
 'use strict';
+Object.defineProperty(exports, "__esModule", { value: true });
 var websocket = require("websocket-stream");
 var urlModule = require("url");
 var WSS_OPTIONS = [
@@ -52,9 +53,10 @@ function createWebSocket(client, opts) {
     var url = buildUrl(opts, client);
     return websocket(url, [websocketSubProtocol], opts.wsOptions);
 }
-function buildBuilder(client, opts) {
+function buildBuilderNormal(client, opts) {
     return createWebSocket(client, opts);
 }
+exports.buildBuilderNormal = buildBuilderNormal;
 function buildBuilderBrowser(client, opts) {
     if (!opts.hostname) {
         opts.hostname = opts.host;
@@ -74,5 +76,7 @@ function buildBuilderBrowser(client, opts) {
     }
     return createWebSocket(client, opts);
 }
-module.exports = buildBuilder;
+exports.buildBuilderBrowser = buildBuilderBrowser;
+var buildBuilder = IS_BROWSER ? buildBuilderBrowser : buildBuilderNormal;
+exports.buildBuilder = buildBuilder;
 //# sourceMappingURL=ws.js.map

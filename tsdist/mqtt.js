@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 'use strict';
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
 Object.defineProperty(exports, "__esModule", { value: true });
 /*
  * Copyright (c) 2015-2015 MQTT.js contributors.
@@ -7,13 +10,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  *
  * See LICENSE for more information
  */
-var client_1 = require("./lib/client");
-exports.MqttClient = client_1.MqttClient;
-exports.Client = client_1.MqttClient;
-var connect_1 = require("./lib/connect");
-exports.connect = connect_1.connect;
-var store_1 = require("./lib/store");
-exports.Store = store_1.default;
+__export(require("./ts"));
 function cli() {
     var commist = require('commist')();
     var helpMe = require('help-me')();

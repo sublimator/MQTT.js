@@ -44,8 +44,7 @@
     "doc",
     "bin",
     "examples",
-    "test",
-    "mqtt.js"
+    "test"
   ],
   "engines": {
     "node": ">=4.0.0"

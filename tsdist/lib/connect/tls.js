@@ -1,7 +1,8 @@
 'use strict';
+Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
-var tls = require("tls");
 function buildBuilder(mqttClient, opts) {
+    var tls = require('tls');
     var connection;
     opts.port = opts.port || 8883;
     opts.host = opts.hostname || opts.host || 'localhost';
@@ -31,5 +32,5 @@ function buildBuilder(mqttClient, opts) {
     connection.on('error', handleTLSerrors);
     return connection;
 }
-module.exports = buildBuilder;
+exports.buildBuilder = buildBuilder;
 //# sourceMappingURL=tls.js.map

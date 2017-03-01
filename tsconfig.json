@@ -9,6 +9,7 @@
         "sourceMap": true
     },
     "files" : [
+      "ts.ts",
       "mqtt.ts",
       "lib/client.ts",
       "lib/connect/index.ts",
