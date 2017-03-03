@@ -1,6 +1,6 @@
 import {MqttClient} from './lib/client'
 import {connect} from './lib/connect'
-import Store from './lib/store'
+import {Store} from './lib/store'
 
 // Expose MqttClient
 export {connect}

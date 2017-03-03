@@ -94,5 +94,5 @@ var Store = (function () {
     };
     return Store;
 }());
-exports.default = Store;
+exports.Store = Store;
 //# sourceMappingURL=store.js.map

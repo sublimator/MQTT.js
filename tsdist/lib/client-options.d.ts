@@ -1,4 +1,4 @@
-import Store from './store';
+import { Store } from './store';
 import { QoS } from './types';
 export interface ClientOptions extends SecureClientOptions {
     href?: string;

@@ -3,9 +3,9 @@
  * Module dependencies
  */
 import * as events from 'events';
-import Store from './store';
-import { QoS, Packet } from './types';
-import { ClientOptions, ClientSubscribeOptions, ClientPublishOptions } from './client-options';
+import { Store } from './store';
+import { Packet, QoS } from './types';
+import { ClientOptions, ClientPublishOptions, ClientSubscribeOptions } from './client-options';
 export interface SubscriptionGrant {
     /**
      *  is a subscribed to topic

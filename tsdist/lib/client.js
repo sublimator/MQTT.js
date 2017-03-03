@@ -96,8 +96,8 @@ var MqttClient = (function (_super) {
         }
         _this.options.clientId = _this.options.clientId || defaultId();
         // Inflight message storages
-        _this.outgoingStore = _this.options.outgoingStore || new store_1.default();
-        _this.incomingStore = _this.options.incomingStore || new store_1.default();
+        _this.outgoingStore = _this.options.outgoingStore || new store_1.Store();
+        _this.incomingStore = _this.options.incomingStore || new store_1.Store();
         // Should QoS zero messages be queued when the connection is broken?
         _this.queueQoSZero = _this.options.queueQoSZero === undefined ? true : _this.options.queueQoSZero;
         // Mark connected on connect

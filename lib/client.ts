@@ -7,18 +7,26 @@ import * as eos from 'end-of-stream'
 import * as mqttPacket from 'mqtt-packet'
 import * as reInterval from 'reinterval'
 import { Writable } from 'readable-stream'
-import Store from './store'
+import { Store } from './store'
 import validations from './validations'
 
 import {
-  QoS, Packet, PubrelPacket, PublishPacket,
-  ConnackPacket, PingrespPacket, UnsubscribePacket, SubackPacket,
-  SubscribePacket, ConnectPacket
+  ConnackPacket,
+  ConnectPacket,
+  Packet,
+  PingrespPacket,
+  PublishPacket,
+  PubrelPacket,
+  QoS,
+  SubackPacket,
+  SubscribePacket,
+  UnsubscribePacket
 } from './types'
 
 import {
-  ClientOptions, ClientSubscribeOptions,
-  ClientPublishOptions
+  ClientOptions,
+  ClientPublishOptions,
+  ClientSubscribeOptions
 } from './client-options'
 
 const setImmediate = global.setImmediate || function (callback: Function) {

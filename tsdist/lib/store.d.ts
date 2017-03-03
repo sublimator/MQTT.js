@@ -30,4 +30,4 @@ declare class Store {
      */
     close(cb: any): void;
 }
-export default Store;
+export { Store };
