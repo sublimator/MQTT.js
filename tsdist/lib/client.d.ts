@@ -57,7 +57,7 @@ export declare class MqttClient extends events.EventEmitter {
     connackTimer: NodeJS.Timer;
     reconnectTimer: NodeJS.Timer;
     pingTimer: IReinterval;
-    connected: false;
+    connected: boolean;
     disconnecting: boolean;
     disconnected: boolean;
     reconnecting: boolean;
@@ -80,11 +80,11 @@ export declare class MqttClient extends events.EventEmitter {
     on(event: 'message', cb: OnMessageCallback): this;
     on(event: 'packetsend' | 'packetreceive', cb: OnPacketCallback): this;
     on(event: 'error', cb: OnErrorCallback): this;
-    on(event: string, cb: Function): any;
+    on(event: string, cb: Function): this;
     once(event: 'message', cb: OnMessageCallback): this;
     once(event: 'packetsend' | 'packetreceive', cb: OnPacketCallback): this;
     once(event: 'error', cb: OnErrorCallback): this;
-    once(event: string, cb: Function): any;
+    once(event: string, cb: Function): this;
     constructor(streamBuilder: any, options: any);
     /**
      * setup the event handlers in the inner stream.

@@ -41,7 +41,5 @@ function validateTopics(topics) {
     }
     return null;
 }
-exports.default = {
-    validateTopics: validateTopics
-};
+exports.validateTopics = validateTopics;
 //# sourceMappingURL=validations.js.map

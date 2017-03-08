@@ -6,9 +6,9 @@ import * as events from 'events'
 import * as eos from 'end-of-stream'
 import * as mqttPacket from 'mqtt-packet'
 import * as reInterval from 'reinterval'
+import * as validations from './validations'
 import { Writable } from 'readable-stream'
 import { Store } from './store'
-import validations from './validations'
 
 import {
   ConnackPacket,
@@ -133,7 +133,7 @@ export class MqttClient extends events.EventEmitter {
   pingTimer: IReinterval = null
 
   // Is the client connected?
-  connected: false
+  connected = false
   // Are we disconnecting?
   disconnecting = false
   disconnected: boolean = null
@@ -159,8 +159,8 @@ export class MqttClient extends events.EventEmitter {
   on(event: 'message', cb: OnMessageCallback): this
   on(event: 'packetsend' | 'packetreceive', cb: OnPacketCallback): this
   on(event: 'error', cb: OnErrorCallback): this
-  on(event: string, cb: Function)
-  on(event: string, cb: Function) {
+  on(event: string, cb: Function): this
+  on(event: string, cb: Function): this {
     super.on(event, cb)
     return this
   }
@@ -168,8 +168,8 @@ export class MqttClient extends events.EventEmitter {
   once(event: 'message', cb: OnMessageCallback): this
   once(event: 'packetsend' | 'packetreceive', cb: OnPacketCallback): this
   once(event: 'error', cb: OnErrorCallback): this
-  once(event: string, cb: Function)
-  once(event: string, cb: Function) {
+  once(event: string, cb: Function): this
+  once(event: string, cb: Function): this {
     super.once(event, cb)
     return this
   }

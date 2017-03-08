@@ -8,9 +8,9 @@ var events = require("events");
 var eos = require("end-of-stream");
 var mqttPacket = require("mqtt-packet");
 var reInterval = require("reinterval");
+var validations = require("./validations");
 var readable_stream_1 = require("readable-stream");
 var store_1 = require("./store");
-var validations_1 = require("./validations");
 var setImmediate = global.setImmediate || function (callback) {
     // works in node v0.8
     process.nextTick(callback);
@@ -65,6 +65,8 @@ var MqttClient = (function (_super) {
         _this.reconnectTimer = null;
         // Ping timer, setup in _setupPingTimer
         _this.pingTimer = null;
+        // Is the client connected?
+        _this.connected = false;
         // Are we disconnecting?
         _this.disconnecting = false;
         _this.disconnected = null;
@@ -339,7 +341,7 @@ var MqttClient = (function (_super) {
             opts = callback;
             callback = nop;
         }
-        invalidTopic = validations_1.default.validateTopics(obj);
+        invalidTopic = validations.validateTopics(obj);
         if (invalidTopic !== null) {
             setImmediate(callback, new Error('Invalid topic ' + invalidTopic));
             return this;

@@ -47,6 +47,4 @@ function validateTopics (topics) {
   return null
 }
 
-export default {
-  validateTopics: validateTopics
-}
+export {validateTopics}
